@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "@/styles/globals.css";
 import Head from "next/head";
 import { FloatingNavbar } from "@/components/FloatingNavbar";
+import { AuroraBackgroundComponent } from "@/components/AuroraBackgroundComponent";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -49,9 +50,11 @@ export default function RootLayout({
         {/* TODO */}
         <link rel="canonical" href="https://alexmarcos.software" />
       </Head>
-      <body className={`${inter.className} mx-12 mt-8`}>
-        <FloatingNavbar />
-        <main>{children}</main>
+      <body className={`${inter.className}`}>
+        <AuroraBackgroundComponent>
+          <FloatingNavbar />
+          <main className="mt-24 mb-12">{children}</main>
+        </AuroraBackgroundComponent>
       </body>
     </html>
   );
