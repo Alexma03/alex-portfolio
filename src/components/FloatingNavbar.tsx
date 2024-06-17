@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { FloatingNav } from "./ui/floating-navbar";
+import { CombinedNav } from "./ui/convined-navbar"; // Cambia esta ruta según sea necesario
 import { IconHome, IconMessage, IconUser } from "@tabler/icons-react";
 
 export function FloatingNavbar() {
@@ -37,8 +37,8 @@ export function FloatingNavbar() {
   ];
 
   return (
-    <div className="relative  w-full">
-      <FloatingNav navItems={navItems} toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
+    <div className="relative w-full">
+      <CombinedNav navItems={navItems} toggleDarkMode={toggleDarkMode} darkMode={darkMode} />
     </div>
   );
 }

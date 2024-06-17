@@ -14,13 +14,12 @@ export const FloatingNav = ({
   navItems,
   className,
   toggleDarkMode,
-  darkMode
+  darkMode,
 }: {
   navItems: {
     name: string;
-    link?: string;
+    link: string;
     icon?: JSX.Element;
-    onClick?: () => void;
   }[];
   className?: string;
   toggleDarkMode: () => void;
@@ -43,9 +42,9 @@ export const FloatingNav = ({
       setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [lastScrollY]);
 
@@ -68,36 +67,27 @@ export const FloatingNav = ({
           className
         )}
       >
-        {navItems.map((navItem, idx) =>
-          navItem.link ? (
-            <Link
-              key={`link=${idx}`}
-              href={navItem.link}
-              className={cn(
-                "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
-              )}
-            >
-              <span className="block sm:hidden">{navItem.icon}</span>
-              <span className="hidden sm:block text-sm">{navItem.name}</span>
-            </Link>
-          ) : (
-            <button
-              key={`button=${idx}`}
-              onClick={navItem.onClick}
-              className={cn(
-                "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
-              )}
-            >
-              <span className="block sm:hidden">{navItem.icon}</span>
-              <span className="hidden sm:block text-sm">{navItem.name}</span>
-            </button>
-          )
-        )}
-        <button 
+        {navItems.map((navItem: any, idx: number) => (
+          <Link
+            key={`link=${idx}`}
+            href={navItem.link}
+            className={cn(
+              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500"
+            )}
+          >
+            <span className="block sm:hidden">{navItem.icon}</span>
+            <span className="hidden sm:block text-sm">{navItem.name}</span>
+          </Link>
+        ))}
+        <button
           onClick={toggleDarkMode}
           className="border text-sm font-medium relative border-neutral-200 dark:border-white/[0.2] text-black dark:text-white px-4 py-2 rounded-full"
         >
-          {darkMode ? <IconSun className="h-4 w-4" /> : <IconMoon className="h-4 w-4" />}
+          {darkMode ? (
+            <IconSun className="h-4 w-4" />
+          ) : (
+            <IconMoon className="h-4 w-4" />
+          )}
         </button>
       </motion.div>
     </AnimatePresence>
