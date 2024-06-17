@@ -49,7 +49,7 @@ export default function RootLayout({
         {/* TODO */}
         <link rel="canonical" href="https://alexmarcos.software" />
       </Head>
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} mx-12 mt-8`}>
         <FloatingNavbar />
         <main>{children}</main>
       </body>
